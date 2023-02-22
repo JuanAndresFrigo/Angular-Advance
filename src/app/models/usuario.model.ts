@@ -15,11 +15,11 @@ export class Usuario {
   public get imagenUrl(): string {
     // http://localhost:3000/api/uploads/medicos/1a9b9b3f-dcf7-410f-802c-b15018af2c00.jpg
 
-    if (this.img?.includes('http')) {
+    if (!this.img) {
+      return `${base_url}/uploads/usuarios/no-img`;
+    } else if (this.img?.includes('http')) {
       return this.img;
-    }
-
-    if (this.img) {
+    } else if (this.img) {
       return `${base_url}/uploads/usuarios/${this.img}`;
     } else {
       return `${base_url}/uploads/usuarios/no-img`;
