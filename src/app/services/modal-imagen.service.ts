@@ -10,7 +10,7 @@ export class ModalImagenService {
   private _ocultarModal: boolean = true;
   public tipo!: 'usuarios' | 'medicos' | 'hospitales';
   public id: string = '';
-  public img: string = 'no-img';
+  public img: string;
 
   public nuevaImagen: EventEmitter<string> = new EventEmitter<string>();
 

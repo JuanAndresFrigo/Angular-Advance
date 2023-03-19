@@ -41,16 +41,19 @@ export class BusquedasService {
     );
   }
   transformarHospitales(resultados: any[]): Hospital[] {
-    return resultados
+    return resultados;
   }
   transformarMedicos(resultados: any[]): Medico[] {
-    return resultados
+    return resultados;
   }
 
-  buscar(
-    tipo: 'usuarios' | 'medicos' | 'hospitales',
-    termino: string
-  ) {
+  busquedaGlobal(termino: string) {
+    const url = `${base_url}/todo/${termino}`;
+    return this.http.get<any[]>(url, this.headers)
+
+  }
+
+  buscar(tipo: 'usuarios' | 'medicos' | 'hospitales', termino: string) {
     const url = `${base_url}/todo/coleccion/${tipo}/${termino}`;
     return this.http.get<any[]>(url, this.headers).pipe(
       map((resp: any) => {
